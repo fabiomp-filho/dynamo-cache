@@ -1,0 +1,30 @@
+services:
+  dynamodb-main:
+    image: amazon/dynamodb-local
+    container_name: dynamodb_main
+    ports:
+      - "8000:8000"
+    command: -jar DynamoDBLocal.jar -inMemory -sharedDb
+    networks:
+      - aws-local
+
+  dynamodb-cache:
+    image: amazon/dynamodb-local
+    container_name: dynamodb_cache
+    ports:
+      - "8001:8000"
+    command: -jar DynamoDBLocal.jar -inMemory -sharedDb
+    networks:
+      - aws-local
+  sqs:
+    image: softwaremill/elasticmq
+    container_name: sqs_local
+    ports:
+      - "9324:9324"
+      - "9325:9325"
+    networks:
+      - aws-local
+
+networks:
+  aws-local:
+    driver: bridge
