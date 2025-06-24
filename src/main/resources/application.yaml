@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: demo
+aws:
+  dynamo:
+    main:
+      region: us-east-1
+      credentials:
+        access-key: dummy
+        secret-key: dummy
+      endpoint: http://localhost:8000
+
+    cache:
+      region: us-east-1
+      credentials:
+        access-key: dummy
+        secret-key: dummy
+      endpoint: http://localhost:8001
